@@ -1,20 +1,55 @@
+import { use, useState } from "react";
+import Castle from "./component/01-Castle";
+
 export default function App() {
+  // declare a state variable
+  // destructure คือการเอาของออกมา
+  // สิ่งที่ useState แสดงออกมาคือ array ต้องมีชื่อตัวแปร ชื่อ function การที่เราเขียนแบบนี้คือเป็นการดึงตัวแปรออกมาและเป็นการตั้งชื่อไปในตัวด้วย
+  const [question, setQuestion] = useState("");
+
+  const [answer, setAnswer] = useState("");
+
+  // e === eventObject ที่เรารับเข้ามาใน function นี้
+  const handleQuestion = (e) => {
+    console.log(e);
+    setQuestion(e.target.value);
+  };
+
+  const handleAnswer = (e) => setAnswer(e.target.value);
+
+  //console.log(useState);
+
   return (
-    <div className="min-h-screen flex justify-center bg-blue-950">
-      <div className="p-6 gap-y-6 flex flex-col justify-start w-[80%] lg:w-[70%]">
-        <h1 className="w-full p-6 bg-amber-100 font-extrabold">
-          React App Starter
-        </h1>
-        <section className="w-full p-5 bg-amber-100 flex">
-          <ul className="list-inside list-disc flex-1">
-            <span className="font-semibold">Tech Stack:</span>
-            <li>Vite</li>
-            <li>React</li>
-            <li>JavaScript</li>
-            <li>Tailwind</li>
-          </ul>
-        </section>
-      </div>
+    <div className="flex flex-col justify-center items-center min-h-screen bg-gray-800 text-white pb-80 py-10 gap-y-4">
+      <p className="text-purple-300">
+        Message for Secret Room:{" "}
+        <span className="text-yellow-300">
+          {/* ternory operator สำหรับทำ conditioning */}
+          {/* ส่ง eventObject มา */}
+          {question ? `✅ ${question}` : "🕰️ Waiting for a message...."}
+        </span>
+      </p>
+
+      <textarea
+        value={question}
+        // Add event listener ดักจับ event change
+        onChange={handleQuestion}
+        className="bg-white text-black rounded px-2 py-1"
+        placeholder="Type your message here...."
+      />
+
+      <p className="text-green-300">
+        Reply from Secret Room :{""}
+        <span className="text-yellow-300">
+          {answer ? `✅ ${answer}` : "⏳ Waiting for a reply...."}
+        </span>
+      </p>
+
+      {/* {} เสมือนประตูเข้าสู่โลก JS เพราะตอนนี้เราเขียน html อยู่ */}
+      {/* ส่งตัวแปร question เข้าไปใน Castle */}
+      {/* question คือการตั้งชื่อ key และ {คือค่าของตัวแปรที่เรา const เพื่อจะส่งเข้าไปเก็บใน object}*/}
+      <Castle question={question} answer={answer} handleAnswer={handleAnswer} />
+      {/* <Castle/> คือ react component */}
     </div>
   );
 }
