@@ -1,8 +1,8 @@
-import { use, useState } from "react";
+import { useState } from "react"; // หากใช้ react hook ต้องเรียกใช้
 import Castle from "./component/01-Castle";
 
 export default function App() {
-  // declare a state variable
+  // declare react's state variable
   // destructure คือการเอาของออกมา
   // สิ่งที่ useState แสดงออกมาคือ array ต้องมีชื่อตัวแปร ชื่อ function การที่เราเขียนแบบนี้คือเป็นการดึงตัวแปรออกมาและเป็นการตั้งชื่อไปในตัวด้วย
   const [question, setQuestion] = useState("");
