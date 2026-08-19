@@ -1,6 +1,10 @@
 import Gallery from "./07-Gallery";
+import { useContext } from "react";
+import { MessageContext } from "../context/messageContext/MessageContext";
 
-export default function Corridor({ question, answer, handleAnswer }) {
+export default function Corridor() {
+  const { question } = useContext(MessageContext);
+
   return (
     <div className="flex flex-col justify-center items-center pt-10 rounded-xl bg-sky-800 text-white w-[90%]">
       <h1>Corridor</h1>
@@ -12,11 +16,7 @@ export default function Corridor({ question, answer, handleAnswer }) {
       </p>
 
       {/* Render Gallery Here */}
-      <Gallery
-        question={question}
-        answer={answer}
-        handleAnswer={handleAnswer}
-      />
+      <Gallery />
     </div>
   );
 }

@@ -1,6 +1,10 @@
 import Tower from "./02-Tower";
+import { useContext } from "react";
+import { MessageContext } from "../context/messageContext/MessageContext";
 
-export default function Castle({ question, answer, handleAnswer }) {
+export default function Castle() {
+  const { question } = useContext(MessageContext);
+
   return (
     <div className="flex flex-col justify-center items-center pt-10 bg-red-500 text-white w-full rounded-xl">
       <h1>Castle</h1>
@@ -20,7 +24,7 @@ export default function Castle({ question, answer, handleAnswer }) {
       </p> */}
 
       {/* Render tower here */}
-      <Tower question={question} answer={answer} handleAnswer={handleAnswer} />
+      <Tower />
     </div>
   );
 }

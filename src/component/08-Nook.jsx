@@ -1,6 +1,10 @@
 import SecretRoom from "./09-SecretRoom";
+import { useContext } from "react";
+import { MessageContext } from "../context/messageContext/MessageContext";
 
-export default function Nook({ question, answer, handleAnswer }) {
+export default function Nook() {
+  const { question } = useContext(MessageContext);
+
   return (
     <div className="flex flex-col justify-center items-center pt-10 rounded-xl bg-purple-800 text-white w-[90%]">
       <h1>Nook</h1>
@@ -13,11 +17,7 @@ export default function Nook({ question, answer, handleAnswer }) {
       </p>
 
       {/* Render SecretRoom Here */}
-      <SecretRoom
-        question={question}
-        answer={answer}
-        handleAnswer={handleAnswer}
-      />
+      <SecretRoom />
     </div>
   );
 }

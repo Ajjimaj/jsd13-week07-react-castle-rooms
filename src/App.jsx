@@ -1,23 +1,10 @@
-import { useState } from "react"; // หากใช้ react hook ต้องเรียกใช้
 import Castle from "./component/01-Castle";
 
+import { useContext } from "react";
+import { MessageContext } from "./context/messageContext/MessageContext";
+
 export default function App() {
-  // declare react's state variable
-  // destructure คือการเอาของออกมา
-  // สิ่งที่ useState แสดงออกมาคือ array ต้องมีชื่อตัวแปร ชื่อ function การที่เราเขียนแบบนี้คือเป็นการดึงตัวแปรออกมาและเป็นการตั้งชื่อไปในตัวด้วย
-  const [question, setQuestion] = useState("");
-
-  const [answer, setAnswer] = useState("");
-
-  // e === eventObject ที่เรารับเข้ามาใน function นี้
-  const handleQuestion = (e) => {
-    console.log(e);
-    setQuestion(e.target.value);
-  };
-
-  const handleAnswer = (e) => setAnswer(e.target.value);
-
-  //console.log(useState);
+  const { question, answer, handleQuestion } = useContext(MessageContext);
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen bg-gray-800 text-white pb-80 py-10 gap-y-4">
@@ -48,7 +35,7 @@ export default function App() {
       {/* {} เสมือนประตูเข้าสู่โลก JS เพราะตอนนี้เราเขียน html อยู่ */}
       {/* ส่งตัวแปร question เข้าไปใน Castle */}
       {/* question คือการตั้งชื่อ key และ {คือค่าของตัวแปรที่เรา const เพื่อจะส่งเข้าไปเก็บใน object}*/}
-      <Castle question={question} answer={answer} handleAnswer={handleAnswer} />
+      <Castle />
       {/* <Castle/> คือ react component */}
     </div>
   );

@@ -1,6 +1,10 @@
 import Nook from "./08-Nook";
+import { useContext } from "react";
+import { MessageContext } from "../context/messageContext/MessageContext";
 
-export default function Gallery({ question, answer, handleAnswer }) {
+export default function Gallery() {
+  const { question } = useContext(MessageContext);
+
   return (
     <div className="flex flex-col justify-center items-center pt-10 rounded-xl bg-blue-800 text-white w-[90%]">
       <h1>Gallery</h1>
@@ -13,7 +17,7 @@ export default function Gallery({ question, answer, handleAnswer }) {
       </p>
 
       {/* Render Nook Here */}
-      <Nook question={question} answer={answer} handleAnswer={handleAnswer} />
+      <Nook />
     </div>
   );
 }
