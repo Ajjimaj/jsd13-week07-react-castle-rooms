@@ -1,17 +1,38 @@
 import Room from "./04-Room";
 
-export default function Chamber({ question, answer, handleAnswer }) {
+export default function Chamber({
+  question,
+  answer,
+  handleAnswer,
+  prisoner,
+  starterPokemon,
+  gamePhase,
+  setGamePhase,
+  rescuePokemon,
+  setRescuePokemon,
+}) {
   return (
-    <div className="flex flex-col justify-center items-center pt-10 rounded-xl bg-yellow-500 w-[90%]">
-      <h1>Chamber</h1>
-      <p className="text-purple-300">
-        Message for Secret Room:{" "}
-        <span className="text-yellow-300">
+    <div className="flex flex-col justify-center items-center pt-6 rounded-xl bg-amber-500 text-slate-900 w-[96%] p-3 my-2 shadow-md">
+      <h1 className="text-lg font-bold mb-1">Chamber</h1>
+
+      <p className="text-purple-200 text-xs mb-3">
+        Message for Secret Room:
+        <span className="text-yellow-300 font-semibold">
           {question ? `✅ ${question}` : "🕰️ Waiting for a message...."}
         </span>
       </p>
 
-      <Room question={question} answer={answer} handleAnswer={handleAnswer} />
+      <Room
+        question={question}
+        answer={answer}
+        handleAnswer={handleAnswer}
+        prisoner={prisoner}
+        starterPokemon={starterPokemon}
+        gamePhase={gamePhase}
+        setGamePhase={setGamePhase}
+        rescuePokemon={rescuePokemon}
+        setRescuePokemon={setRescuePokemon}
+      />
     </div>
   );
 }
